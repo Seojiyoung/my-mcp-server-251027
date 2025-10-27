@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "my-mcp-server": {
+            "command": "node",
+            "args": ["C:/Users/Seojiyoung/Downloads/typescript-mcp-server-boilerplate-init-setup/typescript-mcp-server-boilerplate-init-setup/build/index.js"],
+            "env": {
+                "HF_TOKEN": "YOUR_HF_TOKEN"
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "typescript-mcp-server-base",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "bin": {
+        "mcp-server": "./build/index.js"
+    },
+    "scripts": {
+        "build": "tsc"
+    },
+    "files": [
+        "build"
+    ],
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@huggingface/inference": "^2.8.1",
+        "@modelcontextprotocol/sdk": "^1.18.1",
+        "dotenv": "^17.2.3",
+        "zod": "^3.25.76"
+    },
+    "devDependencies": {
+        "@types/node": "^24.5.2",
+        "typescript": "^5.9.2"
+    }
+}
