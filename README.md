@@ -15,6 +15,13 @@ typescript-mcp-server-boilerplate/
 ```
 
 ## 🚀 시작하기
+### Installing via Smithery
+
+To install TypeScript MCP Server 보일러플레이트 automatically via [Smithery](https://smithery.ai/server/@Seojiyoung/my-mcp-server-251027):
+
+```bash
+npx -y @smithery/cli install @Seojiyoung/my-mcp-server-251027
+```
 
 ### 1. 의존성 설치
 
