@@ -8,7 +8,8 @@
         "mcp-server": "./build/index.js"
     },
     "scripts": {
-        "build": "tsc"
+        "build": "npx smithery build",
+        "dev": "npx smithery dev"
     },
     "files": [
         "build"

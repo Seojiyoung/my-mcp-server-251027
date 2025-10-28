@@ -2,8 +2,13 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod'
 import { HfInference } from '@huggingface/inference'
+import { Buffer } from 'buffer'
 
-export default function createServer({ config }: { config?: any }) {
+export const configSchema = z.object({
+    HF_TOKEN: z.string().describe("Hugging Face API Token for image generation")
+})
+
+export default function createServer({ config }: { config: z.infer<typeof configSchema> }) {
 
     // 언어별 인사말 매핑
     const greetings: Record<string, string> = {
@@ -186,7 +191,7 @@ export default function createServer({ config }: { config?: any }) {
         },
         async ({ prompt }: { prompt: string }) => {
             try {
-                const client = new HfInference(process.env.HF_TOKEN)
+                const client = new HfInference(config.HF_TOKEN)
                 
                 const imageBlob = await client.textToImage({
                     model: 'black-forest-labs/FLUX.1-schnell',
@@ -217,7 +222,7 @@ export default function createServer({ config }: { config?: any }) {
                     content: [
                         {
                             type: 'text',
-                            text: `이미지 생성 오류: ${error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'}\n\nHF_TOKEN 환경변수가 설정되어 있는지 확인해주세요.`
+                            text: `이미지 생성 오류: ${error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'}\n\nHF_TOKEN 설정이 올바른지 확인해주세요.`
                         }
                     ],
                     isError: true
